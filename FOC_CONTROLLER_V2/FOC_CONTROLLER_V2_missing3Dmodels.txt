@@ -1,0 +1,11 @@
+### Missing 3D models - created on 2025-11-05 09:33
+### Printed by checking_3D_models plugin
+Board file: /home/bilal/Desktop/FOC_CONTROLLER_V1/FOC_CONTROLLER_V2/FOC_CONTROLLER_V2.kicad_pcb
+3D missing models written to:
+/home/bilal/Desktop/FOC_CONTROLLER_V1/FOC_CONTROLLER_V2/FOC_CONTROLLER_V2_missing3Dmodels.txt
+-------
+('Q3', '/home/bilal/Desktop/FOC_CONTROLLER_V1/FOC_CONTROLLER_V2/CSD18510Q5B.stp')
+('IC1', '/home/bilal/Desktop/FOC_CONTROLLER_V1/FOC_CONTROLLER_V2/STSPIN32G4.stp')
+-------
+NUM of 3D missing models:2
+checked extensions ['.stp', '.step', '.stpZ']

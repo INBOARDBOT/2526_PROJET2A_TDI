@@ -1,0 +1,6 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "New_Library")(type "KiCad")(uri "/home/bilal/Documents/Applications/KiCad_custom_lib/Symbol/New_Library.kicad_sym")(options "")(descr ""))
+  (lib (name "STSPIN32G4")(type "KiCad")(uri "${KIPRJMOD}/Custom_lib/Symbol/STSPIN32G4.kicad_sym")(options "")(descr ""))
+  (lib (name "Custom_symbol")(type "KiCad")(uri "${KIPRJMOD}/Custom_lib/Symbol/Custom_symbol.kicad_sym")(options "")(descr ""))
+)
