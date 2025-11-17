@@ -117,4 +117,15 @@
 		(uuid "b478ffdf-8c07-4e25-9c8e-557efed0677f")
 	)
 	(embedded_fonts no)
+	(model "${PROJECT}/DeBouton.stp"
+		(offset
+			(xyz 2.7 -11.8 1.7)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 -0)
+		)
+	)
 )

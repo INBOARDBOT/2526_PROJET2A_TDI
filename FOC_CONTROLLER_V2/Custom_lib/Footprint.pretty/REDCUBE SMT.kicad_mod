@@ -65,6 +65,26 @@
 		(layer "F.SilkS")
 		(uuid "af288de0-d50e-4fec-8d40-d6ce20e821ad")
 	)
+	(fp_line
+		(start 0 -4.1)
+		(end 0 4.1)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "0076a9b5-c861-4e7c-948a-74dee220e636")
+	)
+	(fp_line
+		(start 4.1 0)
+		(end -4.1 0)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "f4060083-db83-4591-8776-718a6a924780")
+	)
 	(fp_text user "${REFERENCE}"
 		(at 0 -7.5 0)
 		(unlocked yes)

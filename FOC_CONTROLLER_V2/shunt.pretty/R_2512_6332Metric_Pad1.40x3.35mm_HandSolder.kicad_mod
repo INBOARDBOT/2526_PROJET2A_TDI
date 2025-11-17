@@ -1,0 +1,208 @@
+(footprint "R_2512_6332Metric_Pad1.40x3.35mm_HandSolder"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Resistor SMD 2512 (6332 Metric), square (rectangular) end terminal, IPC-7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
+	(tags "resistor handsolder")
+	(property "Reference" "REF**"
+		(at 0 -2.63 0)
+		(layer "F.SilkS")
+		(uuid "e803701f-c922-4c0f-9da7-1a13f2f9f3c5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "R_2512_6332Metric_Pad1.40x3.35mm_HandSolder"
+		(at 0 2.63 0)
+		(layer "F.Fab")
+		(uuid "1094c745-5f36-4086-a72d-cf676779a74c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b8d23c50-135e-4c42-8921-c72383a821cf")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "065b9327-3f95-4b7f-ba7c-c34a25b4181e")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -2.177064 -1.71)
+		(end 2.177064 -1.71)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "74ab1859-45da-451f-b132-ba610958c0f4")
+	)
+	(fp_line
+		(start -2.177064 1.71)
+		(end 2.177064 1.71)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "39cdfcfa-51ab-47dd-88c1-d27112405dd0")
+	)
+	(fp_line
+		(start -4 -1.93)
+		(end 4 -1.93)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "97bb092d-bbef-452f-b636-a58322c73a31")
+	)
+	(fp_line
+		(start -4 1.93)
+		(end -4 -1.93)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "76a49d00-38b0-44ee-a9ec-2a5865f52262")
+	)
+	(fp_line
+		(start 4 -1.93)
+		(end 4 1.93)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "9eed4ddf-da49-4f8a-b528-dcfb3844ff3c")
+	)
+	(fp_line
+		(start 4 1.93)
+		(end -4 1.93)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "03989d50-d392-4418-a1b0-de2e26b788ab")
+	)
+	(fp_line
+		(start -3.15 -1.6)
+		(end 3.15 -1.6)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e7a2c08c-5023-44b0-a30a-8ae8a88a099e")
+	)
+	(fp_line
+		(start -3.15 1.6)
+		(end -3.15 -1.6)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "f591df14-d4ec-4f73-aada-306f76687a64")
+	)
+	(fp_line
+		(start 3.15 -1.6)
+		(end 3.15 1.6)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "b44458a4-8a35-4c73-aedd-bc5ad3dc03b4")
+	)
+	(fp_line
+		(start 3.15 1.6)
+		(end -3.15 1.6)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "5e8cfd1c-9b9f-4417-9d3f-311ab9a079ec")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "955b5cd4-bf6c-474c-8e54-1f6171bf995f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at -3.05 0)
+		(size 1.4 3.35)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.178571)
+		(uuid "8fd669d7-e5f6-47a6-be5e-89c42ac14a5b")
+	)
+	(pad "2" smd roundrect
+		(at -2 0 90)
+		(size 0.1525 0.8925)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.15)
+		(clearance 0)
+		(uuid "53612471-13fd-4e04-aecd-c6be7ad6b24c")
+	)
+	(pad "3" smd roundrect
+		(at 2 0 90)
+		(size 0.1525 0.8925)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.15)
+		(clearance 0)
+		(uuid "6874d6e4-1743-49b8-8865-2d5432aeedd0")
+	)
+	(pad "4" smd roundrect
+		(at 3.05 0)
+		(size 1.4 3.35)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.178571)
+		(uuid "659a05a6-00c7-4973-b911-ebb8ce500b39")
+	)
+	(embedded_fonts no)
+	(model "${KICAD9_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_2512_6332Metric.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

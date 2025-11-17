@@ -1,4 +1,4 @@
-26780013996289104
+26790554358348228
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -61598,6 +61598,13 @@ CSD18540Q5BT-2
 MOSFET (N-Channel)
 0
 9
+5
+Footprint
+CSD18543Q3A
+CSD18543Q3A-2
+Integrated Circuit
+0
+9
 9
 Footprint
 DNK0008A
@@ -61614,6 +61621,27 @@ DeBouton
 4
 4
 Footprint
+L_Wurth_WE-MXGI-4020
+Shielded Power Inductor, body 4.1x4.1x2.1mm, https://www.we-online.com/en/components/products/WE-MXGI#/articles/WE-MXGI_SIZE_4020
+SMT
+0
+2
+2
+Footprint
+L_Wurth_WE-MXGI-4020_IPC-7351
+Shielded Power Inductor, body 4.1x4.1x2.1mm, https://www.we-online.com/en/components/products/WE-MXGI#/articles/WE-MXGI_SIZE_4020
+SMT
+0
+2
+2
+Footprint
+L_Wurth_WE-MXGI-5030
+Shielded Power Inductor, body 5.4x5.4x3.1mm, https://www.we-online.com/en/components/products/WE-MXGI#/articles/WE-MXGI_SIZE_5030
+SMT
+0
+2
+2
+Footprint
 QFN50P900X900X100-65N-D
 STSPIN32G4
 Integrated Circuit
@@ -61626,6 +61654,13 @@ REDCUBE SMT
 
 0
 1
+1
+Footprint
+REDCUBETHT_74651173R
+74651173R REDCUBE THR
+Connector
+0
+4
 1
 Fuse
 FuseHolder_Blade_ATO_Littelfuse_FLR_178.6165
@@ -106399,3 +106434,10 @@ Varistor VF
 0
 2
 2
+shunt
+R_2512_6332Metric_Pad1.40x3.35mm_HandSolder
+Resistor SMD 2512 (6332 Metric), square (rectangular) end terminal, IPC-7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
+resistor handsolder
+0
+4
+4

@@ -5389,6 +5389,18 @@
 		)
 		(uuid "c662013e-a1d9-4093-a684-d6a86de7c3db")
 	)
+	(text "RS_485 tranciever on 3.3V"
+		(exclude_from_sim no)
+		(at 457.962 234.442 0)
+		(effects
+			(font
+				(size 3.048 3.048)
+				(thickness 0.4572)
+				(bold yes)
+			)
+		)
+		(uuid "e8dd40e1-ea3a-49dd-8e95-ec04eb30b6ad")
+	)
 	(junction
 		(at 360.68 161.29)
 		(diameter 0)
@@ -12579,6 +12591,93 @@
 			(project "FOC_CONTROLLER_V2"
 				(path "/a5bd1c77-2ac7-4621-b0cb-d4fae8c0736d"
 					(reference "C18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Custom_symbol:THVD1520")
+		(at 453.39 213.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4ce3b404-8708-41e8-8e93-9c087a42ef33")
+		(property "Reference" "U2"
+			(at 449.58 207.772 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "THVD1520"
+			(at 442.468 210.058 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 453.39 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/thvd1400.pdf?ts=1762521914758&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FTHVD1400"
+			(at 453.39 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "THVD1520 is a robust half-duplex RS-485 transceiver for industrial application"
+			(at 453.39 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "c9268eac-c2ef-4daa-8b97-efeed36f167b")
+		)
+		(pin "4"
+			(uuid "f0a05d45-2b11-4ddb-88c8-a46cc6795b7b")
+		)
+		(pin "1"
+			(uuid "913a8e26-1f89-4703-a889-9fc726c50303")
+		)
+		(pin "8"
+			(uuid "542b28d3-eb6a-4d03-abf8-297bd063ccc7")
+		)
+		(pin "5"
+			(uuid "b44ee27d-c13a-41d8-96df-f947cdfab583")
+		)
+		(pin "3"
+			(uuid "82eab687-4f23-4dc0-b516-21bd7c06107e")
+		)
+		(pin "2"
+			(uuid "6a0d892b-9660-4789-b38d-5f20e3787b68")
+		)
+		(pin "7"
+			(uuid "32262190-27a8-490c-ace8-5db2ae0523ee")
+		)
+		(instances
+			(project "FOC_CONTROLLER_V2"
+				(path "/a5bd1c77-2ac7-4621-b0cb-d4fae8c0736d"
+					(reference "U2")
 					(unit 1)
 				)
 			)
