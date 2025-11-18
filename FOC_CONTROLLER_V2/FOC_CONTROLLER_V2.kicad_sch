@@ -7666,6 +7666,16 @@
 	)
 	(wire
 		(pts
+			(xy 124.46 238.76) (xy 139.7 238.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "310df9e8-014a-4e9e-bf49-4d606640196b")
+	)
+	(wire
+		(pts
 			(xy 78.74 175.26) (xy 82.55 175.26)
 		)
 		(stroke
@@ -7906,7 +7916,7 @@
 	)
 	(wire
 		(pts
-			(xy 137.16 242.57) (xy 124.46 242.57)
+			(xy 137.16 246.38) (xy 124.46 246.38)
 		)
 		(stroke
 			(width 0)
@@ -8226,7 +8236,7 @@
 	)
 	(wire
 		(pts
-			(xy 137.16 238.76) (xy 124.46 238.76)
+			(xy 137.16 242.57) (xy 124.46 242.57)
 		)
 		(stroke
 			(width 0)
@@ -9716,7 +9726,7 @@
 	)
 	(wire
 		(pts
-			(xy 124.46 246.38) (xy 137.16 246.38)
+			(xy 124.46 250.19) (xy 137.16 250.19)
 		)
 		(stroke
 			(width 0)
@@ -10465,7 +10475,7 @@
 		(uuid "41acdb4b-167f-42d9-8a64-563a75e7a55c")
 	)
 	(label "DRIVE_EN"
-		(at 144.78 68.58 180)
+		(at 144.78 66.04 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10804,6 +10814,16 @@
 		)
 		(uuid "888cf2c3-26dd-4734-b2b2-381a7ce4dcf3")
 	)
+	(label "PB6"
+		(at 139.7 238.76 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "8e492b16-29af-477d-a4a4-a0e58d3ecbdf")
+	)
 	(label "GLS2"
 		(at 114.3 130.81 90)
 		(effects
@@ -10935,7 +10955,7 @@
 		(uuid "ab09ec0e-57aa-450b-b556-cd6aecf14bbe")
 	)
 	(label "RECIEVE_EN"
-		(at 144.78 66.04 180)
+		(at 144.78 68.58 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -14710,7 +14730,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+24V"
+		(property "Value" "+48V"
 			(at 238.76 85.09 0)
 			(effects
 				(font
@@ -15377,15 +15397,15 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 124.46 238.76 90)
+		(at 124.46 242.57 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "60a017bb-01b3-418a-84b7-a5136b5039f8")
-		(property "Reference" "TP19"
-			(at 117.602 238.76 90)
+		(property "Reference" "TP20"
+			(at 117.602 242.57 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15393,7 +15413,7 @@
 			)
 		)
 		(property "Value" "24V"
-			(at 122.682 243.332 0)
+			(at 122.682 247.142 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15402,7 +15422,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 124.46 233.68 0)
+			(at 124.46 237.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15411,7 +15431,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 124.46 233.68 0)
+			(at 124.46 237.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15420,7 +15440,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 124.46 238.76 0)
+			(at 124.46 242.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15434,7 +15454,7 @@
 		(instances
 			(project "FOC_CONTROLLER_V2"
 				(path "/a5bd1c77-2ac7-4621-b0cb-d4fae8c0736d"
-					(reference "TP19")
+					(reference "TP20")
 					(unit 1)
 				)
 			)
@@ -15772,15 +15792,15 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 124.46 246.38 90)
+		(at 124.46 250.19 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "65a345d1-0758-42c3-9eaf-5fc5a61dd5cd")
-		(property "Reference" "TP21"
-			(at 117.856 246.38 90)
+		(property "Reference" "TP22"
+			(at 117.856 250.19 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15788,7 +15808,7 @@
 			)
 		)
 		(property "Value" "3V3"
-			(at 122.682 250.952 0)
+			(at 122.682 254.762 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15797,7 +15817,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 124.46 241.3 0)
+			(at 124.46 245.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15806,7 +15826,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 124.46 241.3 0)
+			(at 124.46 245.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15815,7 +15835,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 124.46 246.38 0)
+			(at 124.46 250.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15829,7 +15849,7 @@
 		(instances
 			(project "FOC_CONTROLLER_V2"
 				(path "/a5bd1c77-2ac7-4621-b0cb-d4fae8c0736d"
-					(reference "TP21")
+					(reference "TP22")
 					(unit 1)
 				)
 			)
@@ -18448,7 +18468,7 @@
 	)
 	(symbol
 		(lib_id "power:+24V")
-		(at 137.16 238.76 270)
+		(at 137.16 242.57 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -18456,7 +18476,7 @@
 		(dnp no)
 		(uuid "a171666f-524c-4ea8-8b7c-be9305c2052b")
 		(property "Reference" "#PWR053"
-			(at 133.35 238.76 0)
+			(at 133.35 242.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18465,7 +18485,7 @@
 			)
 		)
 		(property "Value" "+24V"
-			(at 135.636 237.49 90)
+			(at 135.636 241.3 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18473,7 +18493,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 137.16 238.76 0)
+			(at 137.16 242.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18482,7 +18502,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 137.16 238.76 0)
+			(at 137.16 242.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18491,7 +18511,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+24V\""
-			(at 137.16 238.76 0)
+			(at 137.16 242.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18854,7 +18874,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 137.16 246.38 270)
+		(at 137.16 250.19 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -18862,7 +18882,7 @@
 		(dnp no)
 		(uuid "a572ba57-0e41-476d-a834-5777f3aac2d3")
 		(property "Reference" "#PWR055"
-			(at 133.35 246.38 0)
+			(at 133.35 250.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18871,7 +18891,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 132.588 245.11 90)
+			(at 132.588 248.92 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18880,7 +18900,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 137.16 246.38 0)
+			(at 137.16 250.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18889,7 +18909,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 137.16 246.38 0)
+			(at 137.16 250.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18898,7 +18918,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 137.16 246.38 0)
+			(at 137.16 250.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19360,7 +19380,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:CP_Elec_10x10.5"
+		(property "Footprint" "Capacitor_SMD:CP_Elec_18x22"
 			(at 36.83 162.56 0)
 			(effects
 				(font
@@ -20066,7 +20086,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 137.16 242.57 270)
+		(at 137.16 246.38 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -20074,7 +20094,7 @@
 		(dnp no)
 		(uuid "c792836b-fcb4-475c-a279-c7fe0bb67e47")
 		(property "Reference" "#PWR054"
-			(at 133.35 242.57 0)
+			(at 133.35 246.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20083,7 +20103,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 134.112 241.3 90)
+			(at 134.112 245.11 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20092,7 +20112,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 137.16 242.57 0)
+			(at 137.16 246.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20101,7 +20121,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 137.16 242.57 0)
+			(at 137.16 246.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20110,7 +20130,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 137.16 242.57 0)
+			(at 137.16 246.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20792,6 +20812,71 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 124.46 238.76 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "dab4e0f2-3878-4298-bead-8696198c3089")
+		(property "Reference" "TP19"
+			(at 117.602 238.76 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "24V"
+			(at 122.682 243.332 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 124.46 233.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 124.46 233.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 124.46 238.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5fd32701-80c8-46a8-a39a-aa9b50c6d042")
+		)
+		(instances
+			(project "FOC_CONTROLLER_V2"
+				(path "/a5bd1c77-2ac7-4621-b0cb-d4fae8c0736d"
+					(reference "TP19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 53.34 44.45 0)
 		(unit 1)
@@ -21012,7 +21097,7 @@
 				)
 			)
 		)
-		(property "Value" "R-78B5.0-2.0"
+		(property "Value" "AZ1117"
 			(at 345.44 158.75 0)
 			(effects
 				(font
@@ -21610,15 +21695,15 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 124.46 242.57 90)
+		(at 124.46 246.38 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "fa444dd8-9651-448d-bd5a-7c9e9bc09f58")
-		(property "Reference" "TP20"
-			(at 117.856 242.57 90)
+		(property "Reference" "TP21"
+			(at 117.856 246.38 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21626,7 +21711,7 @@
 			)
 		)
 		(property "Value" "5V"
-			(at 122.682 247.142 0)
+			(at 122.682 250.952 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21635,7 +21720,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 124.46 237.49 0)
+			(at 124.46 241.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21644,7 +21729,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 124.46 237.49 0)
+			(at 124.46 241.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21653,7 +21738,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 124.46 242.57 0)
+			(at 124.46 246.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21667,7 +21752,7 @@
 		(instances
 			(project "FOC_CONTROLLER_V2"
 				(path "/a5bd1c77-2ac7-4621-b0cb-d4fae8c0736d"
-					(reference "TP20")
+					(reference "TP21")
 					(unit 1)
 				)
 			)
