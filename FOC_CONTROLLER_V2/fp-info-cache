@@ -1,4 +1,4 @@
-26790554728201385
+26792303688432333
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -61592,6 +61592,13 @@ emi filter
 0
 5
 5
+Footprint
+CP_Wurth_WCAP-ASLL-D16L17
+Aluminum Electrolytic Capacitors Low Impedance & Long Life +105 °C, body x16x17mm, https://www.we-online.com/en/components/products/WCAP-ASLL#/articles/WCAP_ASLL_SIZE_16
+SMT
+0
+2
+2
 Footprint
 CSD18540Q5BT
 CSD18540Q5BT-2

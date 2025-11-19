@@ -19380,7 +19380,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:CP_Elec_18x22"
+		(property "Footprint" "Footprint:CP_Wurth_WCAP-ASLL-D16L17"
 			(at 36.83 162.56 0)
 			(effects
 				(font
