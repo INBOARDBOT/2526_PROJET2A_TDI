@@ -152,6 +152,7 @@
 		(property "Reference" "H15"
 			(at 0 -4.15 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "cc8c3ea2-b0e0-40e8-bf92-43c42bade58c")
 			(effects
 				(font
@@ -352,6 +353,7 @@
 		(property "Reference" "H13"
 			(at 0 -4.15 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "ffc828f0-8307-4da0-b048-3b122eb640b4")
 			(effects
 				(font
