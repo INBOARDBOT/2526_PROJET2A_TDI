@@ -1,9 +1,0 @@
-### Module positions - created on 2025-11-10 18:43
-### Printed by pcb_positions plugin
-## Unit = mm, Angle = deg.
-## Pcb Height 60.100mm, Pcb Width 80.100mm [based on Edge bounding box]
-## Side : top
-## Board Aux Origin: 0.000mm ,0.000mm
-# Ref         Val                 Package                       PosX       PosY       Pin1_PosX  Pin1_PosY    Rot     Side      Type
-J1            DC IN               AMASS_XT60PW-M_1x02_P7.20mm.. 19.4250    -50.8400   19.4250    -50.8400      0.0    top       THD
-## End

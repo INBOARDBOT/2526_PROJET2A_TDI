@@ -1,1 +1,0 @@
-[('Q3', '/home/bilal/Desktop/FOC_CONTROLLER_V1/FOC_CONTROLLER_V2/CSD18510Q5B.stp'), ('IC1', '/home/bilal/Desktop/FOC_CONTROLLER_V1/FOC_CONTROLLER_V2/STSPIN32G4.stp')]
