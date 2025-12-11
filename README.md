@@ -2,4 +2,4 @@
 Total Drive Immersion - Motion System
 
 Master - Slave synchonization cycle  
-![Diagram Name](masterslaveSync.Drawio.svg)
+![Diagram Name](masterslaveSync.drawio.svg)
