@@ -20,7 +20,7 @@ Interface Graphique et IHM : Pilote le rendu visuel sur l'écran LCD-TFT et trai
 ## Présentation des Composants
 
 ### Unité Centrale
-<img src="STM32F746G_img.jpg" width="50"><br>
+<img src="STM32F746G_img.jpg" width="150"><br>
 La centrale controle l'enssemble du systeme de simulation, elle doit etre reactive et embarquer une interface graphique servant d'IHM. Voici donc les principales fonctionnalites que la carte STM32F746G nous propose :
 * Puissance de calcul : Architecture Arm Cortex STM32F746NGH6
 * Interactions avec l'utilisateur (IHM) : Ecran tactile 4.3” RGB 480×272 color LCD-TFT
