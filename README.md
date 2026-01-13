@@ -81,7 +81,7 @@ TouchGFX Designer est l'outil utilisé pour concevoir l'environnement visuel. Il
 
 ### Creation du projet
 La première étape consiste à sélectionner le BSP (Board Support Package) correspondant à notre matériel : le `STM32F746G Discovery Kit`.
-{photo}
+<img src="touchgfx_create_proj.png" width="200"><br>
 
 [!IMPORTANT] Cette étape est cruciale car TouchGFX génère non seulement l'interface, mais aussi toute la structure du projet (fichiers de configuration, drivers d'écran, gestion de la mémoire) que nous importerons ensuite dans STM32CubeIDE.
 
@@ -100,7 +100,7 @@ Pour garantir une navigation fluide, nous avons segmenté l'IHM en quatre écran
 
 * SettingScreen : Un espace dédié à la configuration logicielle et matérielle du système.
 
-{photo}
+<img src="touchgfx_homepage.png" width="200"><br>
 
 Avoir une multitude d'ecran permet de faciliter le developpement des differents UI. 
 
