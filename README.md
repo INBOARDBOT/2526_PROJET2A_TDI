@@ -7,6 +7,16 @@ It consist of four linear actuators (with their respective [**drivers**](https:/
 the communication between the drivers and the computer as well as a touchscreen interface.
 The data is sent from SimHub to the the Nucleo via UART. Then the position values are distributed to each actuator via an [**RS485**](https://github.com/INBOARDBOT/2526_PROJET2A_TDI/tree/main/HARDWARE/PCB'S/COM_BOARD) bus.
 
+# 2526_PROJET2A_TDI
+Total Drive Immersion - Motion System
+
+
+Master - Slave synchonization cycle  
+![Diagram Name](masterslaveSync.drawio.svg)
+
+Backend - Frontend synchonization cycle  
+![Diagram Name](backendfrontendSync.drawio.svg)
+
 
 # Achitecture logicielle
 
@@ -123,27 +133,149 @@ Une fois le design finalisé, l'outil génère le code source. Ce processus incl
 
 * La configuration des périphériques de la carte (écran, tactile, DMA2D).
 
-## Backend
+[!NOTE] Bien que TouchGFX Designer soit puissant, il se limite à la couche visuelle. Les interactions complexes (ex: cliquer sur un bouton pour activer un vérin) nécessitent une implémentation manuelle dans le code C++ généré, via des fonctions de rappel (Callbacks).
 
-## Frontend
+## Backend and Frontend communication
+Le défi majeur consiste à faire communiquer l'interface utilisateur avec le reste du système (capteurs, bus RS-485). TouchGFX utilise une architecture structurée pour séparer l'affichage de la logique métier.<br>
+
+Définitions
+* Le Frontend (La Vue) : Comprend les composants visibles à l'écran. Il est responsable de l'affichage des données et de la capture des interactions utilisateur.
+
+* Le Backend (Le Système) : Représente tout ce qui se passe en dehors de l'interface (réception des données RS-485, calculs de trajectoires, mesures de courant).
+
+L'Architecture MVP (Model-View-Presenter)
+Pour assurer une synchronisation fluide sans bloquer l'affichage, TouchGFX s'appuie sur trois couches :
+
+1. Le Model : C'est le point d'entrée du Backend. Il reçoit les événements extérieurs (ex: nouvelle mesure de courant) et les stocke temporairement.
+
+2. Le Presenter : Il agit comme un pont. Il surveille les changements dans le Model et ordonne à la View de se mettre à jour.
+
+3. La View : Elle reçoit les ordres du Presenter et modifie visuellement les widgets (ex: mettre à jour la valeur d'une jauge).
+
+vous pouvez visualiser cette video qui explique en detail comment afficher une valeur sur l'interface graphique [video](https://www.youtube.com/watch?v=Y7d6-59YQu8)
+
+
+# Protocole de Communication
+Comme expliqué précédemment, la liaison entre la centrale et les drivers repose sur une couche physique RS-485. Bien que les signaux en entrée et en sortie de l'interface soient au format UART, le support physique RS-485 permet de transporter ces données sur de longues distances tout en supportant une topologie réseau de type "Bus".
+
+## Architecture Maître-Esclave
+Pour organiser les échanges sur ce canal partagé, nous utilisons une architecture Maître-Esclave :
+
+* Le Maître (Centrale) : Il est l'unique initiateur de la communication. Il interroge ou envoie des ordres aux drivers.
+
+* Les Esclaves (Drivers) : Ils "écoutent" en permanence le bus et ne répondent ou n'agissent que lorsqu'ils sont explicitement sollicités par le maître.
+
+
+## Principe du Bus de Communication 
+Dans cette configuration, tous les esclaves sont branchés en parallèle sur la même ligne physique. Pour éviter que tous les vérins ne s'activent en même temps, nous utilisons un système d'adressage et de trames de données :
+
+1. L'Adressage : Chaque driver possède un identifiant unique (ID). Le message envoyé par la centrale commence par l'adresse de destination.
+
+2. Le Filtrage : Tous les drivers reçoivent le signal, mais seul l'esclave dont l'adresse correspond à celle contenue dans le message traite l'information. Les autres ignorent la trame.
+
+3. Les Données (Payload) : Une fois l'adresse validée, l'esclave décode les instructions (ex: consigne de position, vitesse, ou demande d'état).
+
+## Gestion du flux (Half-Duplex)
+Le bus RS-485 utilisé est généralement Half-Duplex : la centrale et les drivers partagent la même paire de fils pour émettre et recevoir.
+
+Point d'attention : La centrale doit libérer le bus (repasser en mode réception) immédiatement après avoir envoyé une commande pour permettre à l'esclave de renvoyer son accusé de réception ou ses données de télémétrie.
+
+## Structure de communication
+<p align="justify">Afin d'optimiser les échanges de données avec les quatre esclaves du système, nous utilisons un protocole de cycle séquentiel. Le maître initie une transmission/réception itérative de l'esclave 0 à l'esclave 3. Au cours de chaque cycle, le maître récupère l'intégralité des données de l'esclave ciblé et les traite avant de passer au suivant. </p>
+
+### Paquet de Données
+<p align="justify">Le paquet de données est l'élément central de notre protocole. Il agit comme un conteneur standardisé permettant de transporter efficacement les commandes et les retours d'état.</p>
+
+Voici la structure logicielle du paquet :
+
+```
+typedef struct __attribute__((packed))
+{
+    uint8_t startByte;   
+    uint8_t address;     
+    uint8_t cycleId;     
+    
+    uint8_t statusFlags; 
+    uint8_t payloadCount; 
+
+    union {
+        struct {
+            uint8_t type;    
+            uint8_t code;    
+        } fifoEntries[MAX_DATA / 2];
+
+        uint16_t infoArray[MAX_DATA / 2]; 
+        
+        uint8_t rawBytes[MAX_DATA];
+    } payload;
+
+    uint8_t checksum;
+    uint8_t stopByte;    
+} MotionPacket_t;
+```
+
+Caractéristiques de Transmission
+* <p align="justify">Standard UART : Le type uint8_t est utilisé comme unité de base, conformément au standard de communication série UART.</p>
+
+* <p align="justify">Résolution des données : Les données système (telles que celles fournies par SimHub) sont quantifiées sur 16 bits. Par conséquent, chaque valeur dans infoArray occupe deux octets (uint8_t) lors de la transmission série.</p>
+
+
+### Flag 
+Les `Flags` ou `Drapeaux` en francais sont des informations actuelles sur le systeme d'une longueur d'un seul bit. Voici les differents que s'echangent le master et les slaves.
+
+_Flag Master_
+| Flag info     | Position bit  |
+| ------------- |:-------------:|
+| EMPTY_DATA    | 0             |
+| CYCLE_ID_RST  | 1             |
+| ACK_REQUEST   | 2             |
+| TO_DEFINE     | 3             |
+| TO_DEFINE     | 4             |
+| TO_DEFINE     | 5             |
+| TO_DEFINE     | 6             |
+| TO_DEFINE     | 7             |
+
+EMPTY_DATA   : Inform the slave it doesn't need to look for data in the packet<br>
+CYCLE_ID_RST : Inform the slave the cycle id is reset (to 0)<br>
+ACK_REQUEST  : Inform the slave to respond with flag ACK
+
+
+_Flag Slave_
+| Flag info     | Position bit  |
+| ------------- |:-------------:|
+| ACK           | 0             |
+| INIT_DONE     | 1             |
+| MOTOR_EN      | 2             |
+| MOTOR_MOVING  | 3             |
+| BUSY          | 4             |
+| EMPTY_DATA    | 5             |
+| EMPTY_STATUS  | 6             |
+| POS_REACHED   | 7             |
+
+ACK          : Inform the master that his message is acknowledged<br>
+INIT_DONE    : Inform the master the initialisation is done (the system is calibrated)<br>
+MOTOR_EN     : Inform the master that the motor are enabled to move<br>
+MOTOR_MOVING : Inform the master the motor are moving<br>
+BUSY         : Inform the master the slave can't take instruction at the moment<br>
+EMPTY_DATA   : Inform the master to not look for data<br>
+EMPTY_STATUS : Inform the master to not look for errors or events<br>
+POS_REACHED  : Inform the master that the slave reached the wanted position<br>
+
+### Evenements
+
+### Erreurs
+
+### Synchronizer les echanges
+
+## Traiter l'information
+
+### Queue slave
+
 
 # Gestion des Tâches (RTOS)
 
-# Protocole de Communication
-
-## Systeme de commmunication BUS 
-
-## Protocole de communication
-
-Master - Slave synchonization cycle  
-![Diagram Name](masterslaveSync.drawio.svg)
-
-Backend - Frontend synchonization cycle  
-![Diagram Name](backendfrontendSync.drawio.svg)
-
-
 
 # Resources 
-Documentation de la carte STM32F746G [link1](https://www.st.com/en/evaluation-tools/32f746gdiscovery.html#st_description_sec-nav-tab)
-Documentation de l'API graphique TouchGFX [link2](https://support.touchgfx.com/docs/introduction/welcome)
-Documentation RTOS sur la synchronization de threads [link3](https://arm-software.github.io/CMSIS_5/RTOS/html/cmsis__os_8h.html)
+Documentation de la carte STM32F746G [link1](https://www.st.com/en/evaluation-tools/32f746gdiscovery.html#st_description_sec-nav-tab) <br>
+Documentation de l'API graphique TouchGFX [link2](https://support.touchgfx.com/docs/introduction/welcome)<br>
+Documentation RTOS sur la synchronization de threads [link3](https://arm-software.github.io/CMSIS_5/RTOS/html/cmsis__os_8h.html)<br>
