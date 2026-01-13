@@ -8,18 +8,6 @@ the communication between the drivers and the computer as well as a touchscreen 
 The data is sent from SimHub to the the Nucleo via UART. Then the position values are distributed to each actuator via an [**RS485**](https://github.com/INBOARDBOT/2526_PROJET2A_TDI/tree/main/HARDWARE/PCB'S/COM_BOARD) bus.
 
 
-
-# 2526_PROJET2A_TDI
-Total Drive Immersion - Motion System
-
-
-Master - Slave synchonization cycle  
-![Diagram Name](masterslaveSync.drawio.svg)
-
-Backend - Frontend synchonization cycle  
-![Diagram Name](backendfrontendSync.drawio.svg)
-
-
 # Achitecture logicielle
 
 L'architecture logicielle est conçue de manière modulaire, segmentant les fonctionnalités du simulateur de conduite en plusieurs sous-systèmes spécialisés. Cette approche permet de séparer les responsabilités et de faciliter la maintenance du système. L'architecture s'articule autour de trois piliers principaux :
@@ -139,15 +127,20 @@ Une fois le design finalisé, l'outil génère le code source. Ce processus incl
 
 ## Frontend
 
+# Gestion des Tâches (RTOS)
+
 # Protocole de Communication
 
 ## Systeme de commmunication BUS 
 
 ## Protocole de communication
 
+Master - Slave synchonization cycle  
+![Diagram Name](masterslaveSync.drawio.svg)
 
+Backend - Frontend synchonization cycle  
+![Diagram Name](backendfrontendSync.drawio.svg)
 
-# Gestion des Tâches (RTOS)
 
 
 # Resources 
