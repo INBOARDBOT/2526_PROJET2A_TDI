@@ -17,6 +17,14 @@ Module de Gestion des Actionneurs : Assure le traitement des commandes, le calcu
 
 Interface Graphique et IHM : Pilote le rendu visuel sur l'écran LCD-TFT et traite les interactions tactiles de l'utilisateur, tout en gérant les ressources stockées en mémoire Flash.
 
+## Organistaion du projet
+<img src="project_directory.png" width="400"><br>
+* `Application/` Contient la logique métier principale développée par l'utilisateur.
+    * `gui/` et `generated/` Dédiés à l'interface graphique (typiquement pilotés par TouchGFX sur le F746G). Regroupe le backend (logique) et le frontend (assets et code généré).
+    * `Core/` Noyau de l'application gérant la communication et la supervision de la centrale avec le reste du système de simulation.
+* `Driver/` Regroupe les couches d'abstraction matérielle (BSP : gestion des composants externes). 
+* `Debug/` Répertoire de sortie du compilateur.
+
 ## Présentation des Composants
 
 ### Unité Centrale
@@ -80,8 +88,8 @@ L'interface graphique (IHM) permet de visualiser en temps réel l'état du syst�
 TouchGFX Designer est l'outil utilisé pour concevoir l'environnement visuel. Il génère un code C++ optimisé qui tire parti des capacités d'accélération matérielle du STM32.
 
 ### Creation du projet
-La première étape consiste à sélectionner le BSP (Board Support Package) correspondant à notre matériel : le `STM32F746G Discovery Kit`.
-<img src="touchgfx_create_proj.png" width="200"><br>
+La première étape consiste à sélectionner le BSP (Board Support Package) correspondant à notre matériel : le `STM32F746G Discovery Kit`.<br>
+<img src="touchgfx_create_proj.png" width="400"><br>
 
 [!IMPORTANT] Cette étape est cruciale car TouchGFX génère non seulement l'interface, mais aussi toute la structure du projet (fichiers de configuration, drivers d'écran, gestion de la mémoire) que nous importerons ensuite dans STM32CubeIDE.
 
@@ -100,7 +108,7 @@ Pour garantir une navigation fluide, nous avons segmenté l'IHM en quatre écran
 
 * SettingScreen : Un espace dédié à la configuration logicielle et matérielle du système.
 
-<img src="touchgfx_homepage.png" width="200"><br>
+<img src="touchgfx_homepage.png" width="400"><br>
 
 Avoir une multitude d'ecran permet de faciliter le developpement des differents UI. 
 
@@ -133,7 +141,8 @@ Définitions
 
 * Le Backend (Le Système) : Représente tout ce qui se passe en dehors de l'interface (réception des données RS-485, calculs de trajectoires, mesures de courant).
 
-L'Architecture MVP (Model-View-Presenter)
+L'Architecture MVP (Model-View-Presenter)<br>
+<img src="MVP.png" width="400"><br>
 Pour assurer une synchronisation fluide sans bloquer l'affichage, TouchGFX s'appuie sur trois couches :
 
 1. Le Model : C'est le point d'entrée du Backend. Il reçoit les événements extérieurs (ex: nouvelle mesure de courant) et les stocke temporairement.
@@ -157,7 +166,8 @@ Pour organiser les échanges sur ce canal partagé, nous utilisons une architect
 
 
 ## Principe du Bus de Communication 
-Dans cette configuration, tous les esclaves sont branchés en parallèle sur la même ligne physique. Pour éviter que tous les vérins ne s'activent en même temps, nous utilisons un système d'adressage et de trames de données :
+Dans cette configuration, tous les esclaves sont branchés en parallèle sur la même ligne physique. Pour éviter que tous les vérins ne s'activent en même temps, nous utilisons un système d'adressage et de trames de données : <br>
+<img src="Bus_general_schematic.png" width="400"><br>
 
 1. L'Adressage : Chaque driver possède un identifiant unique (ID). Le message envoyé par la centrale commence par l'adresse de destination.
 
@@ -166,6 +176,7 @@ Dans cette configuration, tous les esclaves sont branchés en parallèle sur la 
 3. Les Données (Payload) : Une fois l'adresse validée, l'esclave décode les instructions (ex: consigne de position, vitesse, ou demande d'état).
 
 ## Gestion du flux (Half-Duplex)
+<img src="BBE_Simplex vs Duplex_Transmissions.png" width="400"><br>
 Le bus RS-485 utilisé est généralement Half-Duplex : la centrale et les drivers partagent la même paire de fils pour émettre et recevoir.
 
 Point d'attention : La centrale doit libérer le bus (repasser en mode réception) immédiatement après avoir envoyé une commande pour permettre à l'esclave de renvoyer son accusé de réception ou ses données de télémétrie.
@@ -371,13 +382,17 @@ Master - Slave synchonization cycle
 
 
 # Manipuler SimHub
-
+SimHub est un logiciel qui sert de plug-in a different jeu de course, il permet de recuperer des informations sur la physique du jeu comme les vibrations ou la position en temps reel de l'habitacle. Nous utilsons ces donnees comme la source pour l'entree de notre simulateur de course.
 ## Motion output
+Le motion output est l'onglet de simhub qui nous permet de configurer une communication serie personnalise, nous pouvons aussi y regler les parametres sur les dimensions du siege de conduite qui impact directement les calculs de position.
 ![SIMHUB MO](simhub_motion_system.png)
 ### Parametres de communication
+Pour une communication serie nous pouvons regler les differents parametres ici, les characteres de start et stop configure le demarrage et l'arret de la communication entre la centrale et simhub. La resolution des valeurs de position sont sur 16 bits.
 ![SIMHUB MO SETTINGS](simhub_motion_system_settings.png)
-## Simple configuration UART
-
+### Simple configuration UART
+Depuis la centrale nous pouvons coder un simple code de reception 
+```
+```
 
 
 # Resources 
