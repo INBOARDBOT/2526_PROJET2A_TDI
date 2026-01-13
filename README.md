@@ -382,21 +382,27 @@ Master - Slave synchonization cycle
 
 
 # Manipuler SimHub
-SimHub est un logiciel qui sert de plug-in a different jeu de course, il permet de recuperer des informations sur la physique du jeu comme les vibrations ou la position en temps reel de l'habitacle. Nous utilsons ces donnees comme la source pour l'entree de notre simulateur de course.
+SimHub agit comme une passerelle (middleware) entre les jeux de course (Assetto Corsa, iRacing, etc.) et notre simulateur. Il extrait la télémétrie physique pour la convertir en consignes de mouvement.
 ## Motion output
-Le motion output est l'onglet de simhub qui nous permet de configurer une communication serie personnalise, nous pouvons aussi y regler les parametres sur les dimensions du siege de conduite qui impact directement les calculs de position.
+L'onglet Motion Output est le cœur de la communication. Il permet de définir le protocole série personnalisé qui sera interprété par la carte STM32.
 ![SIMHUB MO](simhub_motion_system.png)
 ### Parametres de communication
-Pour une communication serie nous pouvons regler les differents parametres ici, les characteres de start et stop configure le demarrage et l'arret de la communication entre la centrale et simhub. La resolution des valeurs de position sont sur 16 bits.
+Pour garantir une synchronisation parfaite entre SimHub et le STM32F746G, les réglages suivants sont appliqués :
+
+* Encapsulation : Utilisation d'un caractère de début (0x44 / 'D') et de fin (0x45 / 'E').
+
+* Résolution : Données sur 16 bits (Binary) pour une précision optimale des axes (Pitch, Roll, Yaw, Heave).
+
+* Baudrate : Configuré pour minimiser la latence (ex: 115200 ou 256000 bauds).
 ![SIMHUB MO SETTINGS](simhub_motion_system_settings.png)
 ### Simple configuration UART
-Depuis la centrale nous pouvons coder un simple code de reception pour recevoir les informations sur position du vehicule en temps reel : <br>
-
+Le STM32F746G reçoit le flux binaire en mode Polling pour une simplicité de traitement immédiate, sans la latence liée à la gestion des tampons DMA complexes dans ce contexte de simulation temps réel.<br>
 #### Configuration du port de communication serie
+Le port UART7 est configuré en mode asynchrone. L'horloge du périphérique est ajustée pour supporter les transferts rapides nécessaires au rafraîchissement des moteurs.
 <img src="stm32_huart_conf.png" width="400"><br>
 
 #### Code simple de reception
-
+Le code suivant surveille le registre ISR (code non-bloquant) de l'UART pour capturer la trame de 8 octets (4 axes x 16 bits) envoyée par SimHub.
 ```
 #include "main.h"
 
