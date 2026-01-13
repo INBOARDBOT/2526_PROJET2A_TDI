@@ -345,7 +345,7 @@ FIFO qui se remplie d'erreur et d'evenement, se vide a chaque fois que slqve env
 
 ### Recapitulatif
 Master - Slave synchonization cycle  
-![Diagram Name](masterslaveSync.drawio.svg)
+![Diagram Name](seq_diag_master_slave_cycle.drawio.svg)
 
 
 ## Driver - Traitement des informations
