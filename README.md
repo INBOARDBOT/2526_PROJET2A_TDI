@@ -390,8 +390,55 @@ Le motion output est l'onglet de simhub qui nous permet de configurer une commun
 Pour une communication serie nous pouvons regler les differents parametres ici, les characteres de start et stop configure le demarrage et l'arret de la communication entre la centrale et simhub. La resolution des valeurs de position sont sur 16 bits.
 ![SIMHUB MO SETTINGS](simhub_motion_system_settings.png)
 ### Simple configuration UART
-Depuis la centrale nous pouvons coder un simple code de reception 
+Depuis la centrale nous pouvons coder un simple code de reception pour recevoir les informations sur position du vehicule en temps reel : <br>
+
+#### Configuration du port de communication serie
+<img src="stm32_huart_conf.png" width="400"><br>
+
+#### Code simple de reception
+
 ```
+#include "main.h"
+
+uint16_t sensorData[4];
+uint8_t tempBuffer[8];
+int byteCount = 0;
+bool syncFound = false;
+
+void Update_UART_Communication(void) {
+    if (UART7->ISR & USART_ISR_RXNE) {
+        uint8_t receivedByte = (uint8_t)(UART7->RDR); 
+
+        if (receivedByte == 0x44) {
+            syncFound = true;
+            byteCount = 0;
+        } 
+        else if (receivedByte == 0x45 && syncFound) {
+            if (byteCount == 8) {
+                for (int i = 0; i < 4; i++) {
+                    sensorData[i] = (uint16_t)(tempBuffer[i*2] | (tempBuffer[i*2+1] << 8));
+                }
+                // Traitement des données ici
+            }
+            syncFound = false;
+        } 
+        else if (syncFound) {
+            if (byteCount < 8) {
+                tempBuffer[byteCount++] = receivedByte;
+            } else {
+                syncFound = false;
+            }
+        }
+    }
+}
+
+int main(void) {
+    // Initialisation HAL...
+    
+    while (1) {
+        Update_UART_Communication();
+    }
+}
 ```
 
 
