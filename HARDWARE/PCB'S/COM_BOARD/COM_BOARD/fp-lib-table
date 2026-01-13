@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Footprints")(type "KiCad")(uri "/home/bilal/Desktop/COM_BOARD/Custom/Footprint")(options "")(descr ""))
+)
