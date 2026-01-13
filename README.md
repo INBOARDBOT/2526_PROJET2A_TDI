@@ -331,10 +331,7 @@ ERR_OVERVOLTAGEMCU : Critic error MCU is over voltage <br>
 ### Synchronizer les echanges
 
 Master - Slave synchonization cycle  
-![Diagram Name](masterslaveSync.drawio.svg)
-
-Backend - Frontend synchonization cycle  
-![Diagram Name](backendfrontendSync.drawio.svg)
+![Diagram Name](seq_diag_master_slave_cycle.drawio.svg)
 
 ## Traiter l'information
 
