@@ -7,9 +7,6 @@ It consist of four linear actuators (with their respective [**drivers**](https:/
 the communication between the drivers and the computer as well as a touchscreen interface.
 The data is sent from SimHub to the the Nucleo via UART. Then the position values are distributed to each actuator via an [**RS485**](https://github.com/INBOARDBOT/2526_PROJET2A_TDI/tree/main/HARDWARE/PCB'S/COM_BOARD) bus.
 
-# Manipuler SimHub
-
-
 # Achitecture logicielle
 
 L'architecture logicielle est conçue de manière modulaire, segmentant les fonctionnalités du simulateur de conduite en plusieurs sous-systèmes spécialisés. Cette approche permet de séparer les responsabilités et de faciliter la maintenance du système. L'architecture s'articule autour de trois piliers principaux :
@@ -23,7 +20,7 @@ Interface Graphique et IHM : Pilote le rendu visuel sur l'écran LCD-TFT et trai
 ## Présentation des Composants
 
 ### Unité Centrale
-
+![STM32 BOARD](STM32F746G_img.jpg)
 La centrale controle l'enssemble du systeme de simulation, elle doit etre reactive et embarquer une interface graphique servant d'IHM. Voici donc les principales fonctionnalites que la carte STM32F746G nous propose :
 * Puissance de calcul : Architecture Arm Cortex STM32F746NGH6
 * Interactions avec l'utilisateur (IHM) : Ecran tactile 4.3” RGB 480×272 color LCD-TFT
@@ -76,6 +73,7 @@ Plateforme d'hébergement et de gestion de versions basée sur l'outil Git.
 
 
 # Interface Graphique
+![TOUCHGFX LOGOG](touchgfx_logo.png)
 L'interface graphique (IHM) permet de visualiser en temps réel l'état du système de simulation. Elle offre à l'utilisateur une plateforme interactive pour piloter le simulateur, lancer les procédures de calibration et ajuster les paramètres de conduite.
 
 ## TouchGFX Designer
@@ -370,6 +368,16 @@ Master - Slave synchonization cycle
 ### Synchronisation de thread
 
 #### Semaphore
+
+
+# Manipuler SimHub
+
+## Motion output
+![SIMHUB MO](simhub_motion_system.png)
+### Parametres de communication
+![SIMHUB MO SETTINGS](simhub_motion_system_settings.png)
+## Simple configuration UART
+
 
 
 # Resources 
