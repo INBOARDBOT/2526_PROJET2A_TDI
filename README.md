@@ -340,16 +340,36 @@ Fonctionnement du CycleId
 
 * Intégrité temporelle : Cela évite que le Maître traite des données de télémétrie "anciennes" (provenant d'un cycle précédent) qui pourraient provoquer des saccades ou des erreurs de calcul dans le moteur de mouvement (Direct Drive ou Pistons).
 
-
-## Traiter l'information
-Lorsque le master recuperds les information Master - Slave synchonization cycle  
-![Diagram Name](seq_diag_master_slave_cycle.drawio.svg)
-
-
 ### Queue slave
+FIFO qui se remplie d'erreur et d'evenement, se vide a chaque fois que slqve envoie un packet au master.
+
+### Recapitulatif
+Master - Slave synchonization cycle  
+![Diagram Name](masterslaveSync.drawio.svg)
 
 
-# Gestion des Tâches (RTOS)
+## Driver - Traitement des informations
+[!En cours de developpement]
+
+## Centrale - Traitement des informations
+[!En cours de developpement]
+
+### Machine a etat fini
+[!En cours de developpement]
+
+### Update
+[!En cours de developpement]
+
+### TimeOut
+[!En cours de developpement]
+
+## Synchronisation avec l'API graphique
+
+### Gestion des Tâches (RTOS)
+
+### Synchronisation de thread
+
+#### Semaphore
 
 
 # Resources 
