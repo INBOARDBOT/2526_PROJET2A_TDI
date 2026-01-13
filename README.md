@@ -7,15 +7,7 @@ It consist of four linear actuators (with their respective [**drivers**](https:/
 the communication between the drivers and the computer as well as a touchscreen interface.
 The data is sent from SimHub to the the Nucleo via UART. Then the position values are distributed to each actuator via an [**RS485**](https://github.com/INBOARDBOT/2526_PROJET2A_TDI/tree/main/HARDWARE/PCB'S/COM_BOARD) bus.
 
-# 2526_PROJET2A_TDI
-Total Drive Immersion - Motion System
-
-
-Master - Slave synchonization cycle  
-![Diagram Name](masterslaveSync.drawio.svg)
-
-Backend - Frontend synchonization cycle  
-![Diagram Name](backendfrontendSync.drawio.svg)
+# Manipuler SimHub
 
 
 # Achitecture logicielle
@@ -250,7 +242,7 @@ _Flag Slave_
 | BUSY          | 4             |
 | EMPTY_DATA    | 5             |
 | EMPTY_STATUS  | 6             |
-| POS_REACHED   | 7             |
+| TO_DEFINE     | 7             |
 
 ACK          : Inform the master that his message is acknowledged<br>
 INIT_DONE    : Inform the master the initialisation is done (the system is calibrated)<br>
@@ -259,13 +251,90 @@ MOTOR_MOVING : Inform the master the motor are moving<br>
 BUSY         : Inform the master the slave can't take instruction at the moment<br>
 EMPTY_DATA   : Inform the master to not look for data<br>
 EMPTY_STATUS : Inform the master to not look for errors or events<br>
-POS_REACHED  : Inform the master that the slave reached the wanted position<br>
 
 ### Evenements
+Les événements sont des alertes asynchrones envoyées par les esclaves pour informer d'un changement d'état opérationnel.<br>
+
+Voici la liste evenements recenses :
+_Flag Slave_
+| Evenement              | Code           |
+| ---------------------- |:--------------:|
+| EVT_NONE               | 0x00           |
+| EVT_MOVEMENT_STARTED   | 0x01           |
+| EVT_MOVEMENT_COMPLETED | 0x02           |
+| EVT_TARGET_REACHED     | 0x03           |
+| EVT_LIMIT_SWITCH_MIN   | 0x04           |
+| EVT_LIMIT_SWITCH_MAX   | 0x05           |
+| EVT_HOMING_STARTED     | 0x06           |
+| EVT_HOMING_COMPLETED   | 0x07           |
+| EVT_DRIVER_ONLINE      | 0x08           |
+| EVT_DRIVER_OFFLINE     | 0x09           |
+| EVT_PARAM_CHANGED      | 0x0A           |
+
+
+EVT_NONE : No event <br>              
+EVT_MOVEMENT_STARTED : The slave piston has started its movement <br>  
+EVT_MOVEMENT_COMPLETED : The slave piston has completed its movement<br>
+EVT_TARGET_REACHED : The slave piston is a the requested position<br>    
+EVT_LIMIT_SWITCH_MIN : The slave piston is at the minimum position<br>  
+EVT_LIMIT_SWITCH_MAX : The slave piston is at the maximum position<br>  
+EVT_HOMING_STARTED : The slave piston is performing homing<br>    
+EVT_HOMING_COMPLETED : The slave piston has completed its homing<br>  
+EVT_DRIVER_ONLINE : The slave is now offline wait to be restarted<br>     
+EVT_DRIVER_OFFLINE : The slave is now online and can perform operation <br>     
+EVT_PARAM_CHANGED : The slave has succesfully changed its parameter <br>      
 
 ### Erreurs
+Les erreurs sont des alertes asynchrones signalant un dysfonctionnement ou une anomalie sur un esclave.<br>
+
+Voici la liste evenements recenses :
+_Flag Slave_
+| Erreur                 | Code           |
+| ---------------------- |:--------------:|
+| ERR_NONE               | 0x00           |
+| ERR_INVALID_COMMAND    | 0x01           |
+| ERR_INVALID_PARAM      | 0x02           |
+| ERR_TIMEOUT            | 0x03           |
+| ERR_CHECKSUM_FAIL      | 0x04           |
+| ERR_UNSUPPORTED        | 0x05           |
+| ERR_STALL_DETECTED     | 0x06           |
+| ERR_UNDERVOLTAGE       | 0x07           |
+| ERR_UNDERVOLTAGEMCU    | 0x08           |
+| ERR_FAILED_CALIB       | 0x09           |
+| ERR_FAILED_SET_PIS_POS | 0x0A           |
+| ERR_COMM_LOST          | 0x0B           |
+| ERR_FRAME_INVALID      | 0x0C           |
+| ERR_OVERHEATING        | 0x10           |
+| ERR_OVERCURRENT        | 0x11           |
+| ERR_OVERVOLTAGE        | 0x12           |
+| ERR_OVERVOLTAGEMCU     | 0x13           |
+
+Les erreurs critiques se différencient par le préfixe 0x1-. Elles entraînent généralement une mise en sécurité immédiate du matériel.<br>
+
+ERR_NONE : No error <br>
+ERR_INVALID_COMMAND : Command instruction not found <br>    
+ERR_INVALID_PARAM : Packet parameter is invalid <br>      
+ERR_TIMEOUT : Slave sends it when it takes too much time to do an operation<br>            
+ERR_CHECKSUM_FAIL : Checksum of packet failed <br>              
+ERR_STALL_DETECTED : Piston does not move even though it is instructed to (physical struggle) <br>    
+ERR_UNDERVOLTAGE : Piston under voltage <br>      
+ERR_UNDERVOLTAGEMCU : MCU is under voltage <br>   
+ERR_FAILED_CALIB : Slave failed calibration <br>      
+ERR_FAILED_SET_PIS_POS : Slave failed to set to the correct position <br>
+ERR_COMM_LOST : Slave lost communication with master <br>         
+ERR_FRAME_INVALID : Packet structure is giberish <br>     
+ERR_OVERHEATING : Critic error piston is over heating <br>       
+ERR_OVERCURRENT : Critic error piston is short circuiting <br>       
+ERR_OVERVOLTAGE : Critic error piston is over voltage <br>       
+ERR_OVERVOLTAGEMCU : Critic error MCU is over voltage <br>    
 
 ### Synchronizer les echanges
+
+Master - Slave synchonization cycle  
+![Diagram Name](masterslaveSync.drawio.svg)
+
+Backend - Frontend synchonization cycle  
+![Diagram Name](backendfrontendSync.drawio.svg)
 
 ## Traiter l'information
 
