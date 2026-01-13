@@ -329,11 +329,22 @@ ERR_OVERVOLTAGE : Critic error piston is over voltage <br>
 ERR_OVERVOLTAGEMCU : Critic error MCU is over voltage <br>    
 
 ### Synchronizer les echanges
+Le système de communication utilise un identifiant de synchronisation nommé `cycleId`. Cet octet permet de marquer chaque cycle de communication maître-esclave afin de s'assurer que tous les périphériques sont parfaitement synchronisés.<br>
 
-Master - Slave synchonization cycle  
-![Diagram Name](seq_diag_master_slave_cycle.drawio.svg)
+Fonctionnement du CycleId
+À chaque nouvelle interrogation de la chaîne d'esclaves (de 0 à 3), le Maître incrémente la valeur du cycleId. Cette valeur agit comme une horloge de synchonization temporel :
+
+* Validation : L'esclave doit répondre en incluant le cycleId qu'il vient de recevoir.
+
+* Détection de retard : Si un paquet esclave arrive avec un cycleId différent de celui attendu par le Maître, il est considéré comme obsolète ou corrompu.
+
+* Intégrité temporelle : Cela évite que le Maître traite des données de télémétrie "anciennes" (provenant d'un cycle précédent) qui pourraient provoquer des saccades ou des erreurs de calcul dans le moteur de mouvement (Direct Drive ou Pistons).
+
 
 ## Traiter l'information
+Lorsque le master recuperds les information Master - Slave synchonization cycle  
+![Diagram Name](seq_diag_master_slave_cycle.drawio.svg)
+
 
 ### Queue slave
 
