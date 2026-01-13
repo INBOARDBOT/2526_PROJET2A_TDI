@@ -31,12 +31,12 @@ Fonctionnalitees addiotionnelles petinentes :
 
 
 ### Driver de vérin
-
+[photo]
 Les drivers des verrins permettent de faire l'interface entre les ordres transmis par la centrale et l'action entrepris par les verrins. Il est compose des elements suivants :
 
 
 ### Interface de Communication (Bus RS-485)
-
+[photo]
 L'interface de communication est une carte électronique intermédiaire positionnée entre l'unité centrale et les différents actionneurs (vérins).
 
 Pour surmonter la contrainte de la distance physique et garantir une transmission rapide et immunisée contre les parasites, la liaison s'appuie sur la norme RS-485. Ce standard utilise une signalisation différentielle particulièrement fiable en milieu industriel.
