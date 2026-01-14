@@ -39,7 +39,7 @@ Fonctionnalitees addiotionnelles petinentes :
 
 
 ### Driver de vérin
-<img src="PCB_driver_FOC.png" with="300"><br>
+<img src="PCB_driver_FOC.png" with="150"><br>
 Les drivers des verrins permettent de faire l'interface entre les ordres transmis par la centrale et l'action entrepris par les verrins. 
 Les drivers des verrins permettent de communiquer via le bus RS485 afin de recevoir les données de position et de renvoyer des informations sur l'etat de l'actionneur.Il est compose des elements suivants :
 * STSPIN32G4: Gère les calculs d'asservissemntet  le controle de l'etage de puissance grâce a son driver de mosfet intégré.
@@ -47,7 +47,7 @@ Les drivers des verrins permettent de communiquer via le bus RS485 afin de recev
 * THVD1420: Tranciever RS485 
 
 ### Interface de Communication (Bus RS-485)
-<img src="Communication_PCB.png" with="200"><br>
+<img src="Communication_PCB.png" with="250"><br>
 L'interface de communication est une carte électronique intermédiaire positionnée entre l'unité centrale et les différents actionneurs (vérins).
 
 Pour surmonter la contrainte de la distance physique et garantir une transmission rapide et immunisée contre les parasites, la liaison s'appuie sur la norme RS-485. Ce standard utilise une signalisation différentielle particulièrement fiable en milieu industriel.
