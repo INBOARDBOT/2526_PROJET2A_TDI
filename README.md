@@ -5,7 +5,7 @@ Total Drive Immersion - Motion System
 The objective of this project is to create a 3 axis motion plateform for car racing simulations.
 It consist of four linear actuators (with their respective [**drivers**](https://github.com/INBOARDBOT/2526_PROJET2A_TDI/tree/main/HARDWARE/PCB'S/FOC_CONTROLLER_V2)), a Nucleo Discovery which handle
 the communication between the drivers and the computer as well as a touchscreen interface.
-The data is sent from SimHub to the the Nucleo via UART. Then the position values are distributed to each actuator via an [**RS485**](https://github.com/INBOARDBOT/2526_PROJET2A_TDI/tree/main/HARDWARE/PCB'S/COM_BOARD) bus.
+The data is sent from SimHub to the the Nucleo via UART. The position values are then distributed to each actuator via an [**RS485**](https://github.com/INBOARDBOT/2526_PROJET2A_TDI/tree/main/HARDWARE/PCB'S/COM_BOARD) bus.
 
 # Achitecture logicielle
 
@@ -39,12 +39,15 @@ Fonctionnalitees addiotionnelles petinentes :
 
 
 ### Driver de vérin
-[photo]
-Les drivers des verrins permettent de faire l'interface entre les ordres transmis par la centrale et l'action entrepris par les verrins. Il est compose des elements suivants :
-
+<img src="PCB_driver_FOC.png" with="300"><br>
+Les drivers des verrins permettent de faire l'interface entre les ordres transmis par la centrale et l'action entrepris par les verrins. 
+Les drivers des verrins permettent de communiquer via le bus RS485 afin de recevoir les données de position et de renvoyer des informations sur l'etat de l'actionneur.Il est compose des elements suivants :
+* STSPIN32G4: Gère les calculs d'asservissemntet  le controle de l'etage de puissance grâce a son driver de mosfet intégré.
+* STL130N8F7: L'etage de puissance est composé de trois demi pont avec des N-MOS pouvant supporter jusqu'a 80V et 100A 
+* THVD1420: Tranciever RS485 
 
 ### Interface de Communication (Bus RS-485)
-[photo]
+<img src="Communication_PCB.png" with="200"><br>
 L'interface de communication est une carte électronique intermédiaire positionnée entre l'unité centrale et les différents actionneurs (vérins).
 
 Pour surmonter la contrainte de la distance physique et garantir une transmission rapide et immunisée contre les parasites, la liaison s'appuie sur la norme RS-485. Ce standard utilise une signalisation différentielle particulièrement fiable en milieu industriel.
@@ -71,14 +74,6 @@ Framework graphique avancé spécifiquement optimisé pour les microcontrôleurs
 * Performance : Tire parti de l'accélérateur matériel Chrom-ART de la carte pour obtenir des animations fluides (60 FPS) sans surcharger le processeur.
 
 * Synchronisation RTOS : S'intègre avec FreeRTOS pour séparer le thread de rendu graphique des threads critiques de communication et de calcul (Backend/Frontend).
-
-`GitHub` <br>
-Plateforme d'hébergement et de gestion de versions basée sur l'outil Git.
-
-* Collaboration : Centralise le code source pour permettre à plusieurs développeurs de travailler simultanément sur différents modules (centrale, drivers) via un système de branches.
-
-* Documentation : Héberge le présent fichier README et la documentation technique associée pour une meilleure visibilité du projet.
-
 
 # Interface Graphique
 <img src="touchgfx_logo.png" width="150"><br>
