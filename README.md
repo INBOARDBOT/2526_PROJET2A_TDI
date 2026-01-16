@@ -58,22 +58,20 @@ L'interface assure la conversion des signaux : elle transforme le protocole UART
 Le développement du projet repose sur une chaîne d'outils intégrée, permettant de gérer aussi bien la configuration matérielle que l'interface utilisateur et le versionnage du code.
 
 `STM32CubeIDE` <br>
-Il s'agit de l'environnement de développement (IDE) "tout-en-un" fourni par STMicroelectronics.
+Il s'agit de l'environnement de développement (IDE) fourni par STMicroelectronics.
 
-* Configuration : Intègre STM32CubeMX pour configurer graphiquement les périphériques (UART, RS-485, Horloges) et générer le code d'initialisation.
+* Configuration : Intègre STM32CubeMX pour configurer graphiquement les périphériques (UART, RS-485, Horloges).
 
 * Développement & Debug : Permet l'écriture du code en C/C++ et offre des outils de débogage avancés (lecture de registres en temps réel, analyseur de variables).
-
-* Compilation : Utilise le compilateur GCC pour optimiser les performances du processeur Cortex-M7.
 
 `TouchGFX Designer` <br>
 Framework graphique avancé spécifiquement optimisé pour les microcontrôleurs STM32.
 
 * Design UI : Permet de concevoir l'interface de manière visuelle pour ensuite developper en C++ dessus.
 
-* Performance : Tire parti de l'accélérateur matériel Chrom-ART de la carte pour obtenir des animations fluides (60 FPS) sans surcharger le processeur.
-
 * Synchronisation RTOS : S'intègre avec FreeRTOS pour séparer le thread de rendu graphique des threads critiques de communication et de calcul (Backend/Frontend).
+
+* Generation du fichier du projet : Génére le code d'initialisation avec la configuration de l'interface graphique automatise (gros avantage de TouchGFX).
 
 # Interface Graphique
 <img src="touchgfx_logo.png" width="150"><br>
