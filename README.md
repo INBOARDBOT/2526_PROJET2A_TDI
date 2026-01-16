@@ -222,10 +222,10 @@ Les `Flags` ou `Drapeaux` en francais sont des informations actuelles sur le sys
 _Flag Master_
 | Flag info     | Position bit  |
 | ------------- |:-------------:|
-| EMPTY_DATA    | 0             |
+| ACK_REQUEST   | 0             |
 | CYCLE_ID_RST  | 1             |
-| ACK_REQUEST   | 2             |
-| TO_DEFINE     | 3             |
+| EMPTY_DATA    | 2             |
+| EMPTY_STATUS  | 3             |
 | TO_DEFINE     | 4             |
 | TO_DEFINE     | 5             |
 | TO_DEFINE     | 6             |
