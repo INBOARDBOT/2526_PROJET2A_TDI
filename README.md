@@ -69,7 +69,7 @@ Framework graphique avancé spécifiquement optimisé pour les microcontrôleurs
 
 * Design UI : Permet de concevoir l'interface de manière visuelle pour ensuite developper en C++ dessus.
 
-* Synchronisation RTOS : S'intègre avec FreeRTOS pour séparer le thread de rendu graphique des threads critiques de communication et de calcul (Backend/Frontend).
+* CMSIS-RTOS : S'intègre avec FreeRTOS pour séparer le thread de rendu graphique des threads de communication et de calcul (Backend/Frontend).
 
 * Generation du fichier du projet : Génére le code d'initialisation avec la configuration de l'interface graphique automatise (gros avantage de TouchGFX).
 
