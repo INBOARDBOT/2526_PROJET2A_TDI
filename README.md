@@ -223,15 +223,15 @@ _Flag Master_
 | ACK_REQUEST   | 0             |
 | CYCLE_ID_RST  | 1             |
 | EMPTY_DATA    | 2             |
-| EMPTY_STATUS  | 3             |
+| TO_DEFINE     | 3             |
 | TO_DEFINE     | 4             |
 | TO_DEFINE     | 5             |
 | TO_DEFINE     | 6             |
 | TO_DEFINE     | 7             |
 
-EMPTY_DATA   : Inform the slave it doesn't need to look for data in the packet<br>
-CYCLE_ID_RST : Inform the slave the cycle id is reset (to 0)<br>
-ACK_REQUEST  : Inform the slave to respond with flag ACK
+EMPTY_DATA   : Inform the slave it doesn't need to look for data in the packet <br>
+CYCLE_ID_RST : Inform the slave the cycle id is reset (to 0) <br>
+ACK_REQUEST  : Inform the slave to respond with flag ACK <br>
 
 
 _Flag Slave_
@@ -274,6 +274,13 @@ _Flag Slave_
 | EVT_PARAM_CHANGED      | 0x0A           |
 | EVT_PLAYMODE_ON        | 0x0B           |
 | EVT_PLAYMODE_OFF       | 0x0C           |
+| EVT_INITMODE_ON        | 0x0D           |
+| EVT_INITMODE_OFF       | 0x0E           |
+| EVT_SLEEPMODE_ON       | 0x0F           |
+| EVT_SLEEPMODE_OFF      | 0x10           |
+| EVT_CALIB_STARTED      | 0x11           |
+| EVT_CALIB_COMPLETED    | 0x12           |
+| EVT_PARKED             | 0x13           |
 
 
 EVT_NONE : No event <br>              
@@ -339,21 +346,21 @@ ERR_OVERVOLTAGEMCU : Critic error MCU is over voltage <br>
 Les commandes sont les mots cles dans les paquets de transmission d'informations entre la centrale et les drivers.<br>
 
 Voici la liste des differentes commandes :
-| Commandes              | Code           |
-| ---------------------- |:--------------:|
-| CMD_NOP                | 0x00           |
-| CMD_PING               | 0x01           |
-| CMD_GET_INFO           | 0x02           |
-| CMD_RETURN_INFO        | 0x03           |
-| CMD_SET_STATE          | 0x04           |
-| CMD_SET_MOTOR          | 0x05           |
-| CMD_SET_PISTON         | 0x06           |
+| Commandes              | Code           | User     |
+| ---------------------- |:--------------:|---------:|
+| CMD_NOP                | 0x00           | test     |
+| CMD_PING               | 0x01           | test     |
+| CMD_GET_INFO           | 0x02           | test     |
+| CMD_RETURN_INFO        | 0x03           | test     |
+| CMD_SET_STATE          | 0x04           | test     |
+| CMD_SET_MOTOR          | 0x05           | test     |
+| CMD_SET_PISTON         | 0x06           | test     |
 
 
 CMD_NOP : No cmd <br>
 CMD_PING : Ping driver, waits for ping back to verify communication. Possibility to add a custom message to pinged device. IN (64B, optional) : char* <br>
 CMD_GET_INFO : Retrieve data from driver. IN (1B) :  <br> 
-| Instruction            | bit            |
+| Instruction            | Position bit   |
 | ---------------------- |:--------------:|
 | POSITION               | 0              |
 | SPEED                  | 1              |
@@ -365,10 +372,10 @@ CMD_GET_INFO : Retrieve data from driver. IN (1B) :  <br>
 | UNDEFINED              | 7              |
 <br>
 CMD_SET_STATE : Set the state of the driver. IN (1B) :  <br> 
-| Instruction            | bit            |
+| Instruction            | Position bit   |
 | ---------------------- |:--------------:|
 | SLEEP                  | 0              |
-| CALIBRATION            | 1              |
+| INIT                   | 1              |
 | PLAY                   | 2              |
 | UNDEFINED              | 3              |
 | UNDEFINED              | 4              |
