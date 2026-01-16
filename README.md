@@ -257,7 +257,7 @@ EMPTY_STATUS : Inform the master to not look for errors or events<br>
 ### Evenements
 Les événements sont des alertes asynchrones envoyées par les esclaves pour informer d'un changement d'état opérationnel.<br>
 
-Voici la liste evenements recenses :
+Voici la liste evenements :
 _Flag Slave_
 | Evenement              | Code           |
 | ---------------------- |:--------------:|
@@ -272,6 +272,8 @@ _Flag Slave_
 | EVT_DRIVER_ONLINE      | 0x08           |
 | EVT_DRIVER_OFFLINE     | 0x09           |
 | EVT_PARAM_CHANGED      | 0x0A           |
+| EVT_PLAYMODE_ON        | 0x0B           |
+| EVT_PLAYMODE_OFF       | 0x0C           |
 
 
 EVT_NONE : No event <br>              
@@ -284,13 +286,15 @@ EVT_HOMING_STARTED : The slave piston is performing homing<br>
 EVT_HOMING_COMPLETED : The slave piston has completed its homing<br>  
 EVT_DRIVER_ONLINE : The slave is now offline wait to be restarted<br>     
 EVT_DRIVER_OFFLINE : The slave is now online and can perform operation <br>     
-EVT_PARAM_CHANGED : The slave has succesfully changed its parameter <br>      
+EVT_PARAM_CHANGED : The slave has succesfully changed its parameter <br>     
+EVT_PLAYMODE_ON : The slave is ready for gaming <br>     
+EVT_PLAYMODE_OFF : The slave is not ready for gaming <br>     
+
 
 ### Erreurs
 Les erreurs sont des alertes asynchrones signalant un dysfonctionnement ou une anomalie sur un esclave.<br>
 
-Voici la liste evenements recenses :
-_Flag Slave_
+Voici la liste erreurs :
 | Erreur                 | Code           |
 | ---------------------- |:--------------:|
 | ERR_NONE               | 0x00           |
@@ -329,6 +333,52 @@ ERR_OVERHEATING : Critic error piston is over heating <br>
 ERR_OVERCURRENT : Critic error piston is short circuiting <br>       
 ERR_OVERVOLTAGE : Critic error piston is over voltage <br>       
 ERR_OVERVOLTAGEMCU : Critic error MCU is over voltage <br>    
+
+### Commandes
+
+Les commandes sont les mots cles dans les paquets de transmission d'informations entre la centrale et les drivers.<br>
+
+Voici la liste des differentes commandes :
+| Commandes              | Code           |
+| ---------------------- |:--------------:|
+| CMD_NOP                | 0x00           |
+| CMD_PING               | 0x01           |
+| CMD_GET_INFO           | 0x02           |
+| CMD_RETURN_INFO        | 0x03           |
+| CMD_SET_STATE          | 0x04           |
+| CMD_SET_MOTOR          | 0x05           |
+| CMD_SET_PISTON         | 0x06           |
+
+
+CMD_NOP : No cmd <br>
+CMD_PING : Ping driver, waits for ping back to verify communication. Possibility to add a custom message to pinged device. IN (64B, optional) : char* <br>
+CMD_GET_INFO : Retrieve data from driver. IN (1B) :  <br> 
+| Instruction            | bit            |
+| ---------------------- |:--------------:|
+| POSITION               | 0              |
+| SPEED                  | 1              |
+| ACCELERATION           | 2              |
+| TEMPERATURE            | 3              |
+| MCU_VOLTAGE            | 4              |
+| DRIVER_VOLTAGE         | 5              |
+| UNDEFINED              | 6              |
+| UNDEFINED              | 7              |
+<br>
+CMD_SET_STATE : Set the state of the driver. IN (1B) :  <br> 
+| Instruction            | bit            |
+| ---------------------- |:--------------:|
+| SLEEP                  | 0              |
+| CALIBRATION            | 1              |
+| PLAY                   | 2              |
+| UNDEFINED              | 3              |
+| UNDEFINED              | 4              |
+| UNDEFINED              | 5              |
+| UNDEFINED              | 6              |
+| UNDEFINED              | 7              |
+<br>
+CMD_SET_MOTOR : No cmd <br>
+CMD_SET_PISTON : No cmd <br>
+
 
 ### Synchronizer les echanges
 Le système de communication utilise un identifiant de synchronisation nommé `cycleId`. Cet octet permet de marquer chaque cycle de communication maître-esclave afin de s'assurer que tous les périphériques sont parfaitement synchronisés.<br>
