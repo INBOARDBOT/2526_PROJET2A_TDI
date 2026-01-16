@@ -359,7 +359,7 @@ Master - Slave synchonization cycle
 [!En cours de developpement]
 
 ### Machine a etat fini
-[!En cours de developpement]
+<img src="fsm_master.png" width="400"><br>
 
 ### Update
 [!En cours de developpement]
