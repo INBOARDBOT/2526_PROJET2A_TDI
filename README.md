@@ -346,20 +346,20 @@ ERR_OVERVOLTAGEMCU : Critic error MCU is over voltage <br>
 Les commandes sont les mots cles dans les paquets de transmission d'informations entre la centrale et les drivers.<br>
 
 Voici la liste des differentes commandes :
-| Commandes              | Code           | User     |
-| ---------------------- |:--------------:|---------:|
-| CMD_NOP                | 0x00           | test     |
-| CMD_PING               | 0x01           | test     |
-| CMD_GET_INFO           | 0x02           | test     |
-| CMD_RETURN_INFO        | 0x03           | test     |
-| CMD_SET_STATE          | 0x04           | test     |
-| CMD_SET_MOTOR          | 0x05           | test     |
-| CMD_SET_PISTON         | 0x06           | test     |
+| Commandes | Code | User |
+| :--- | :---: | :--- |
+| CMD_NOP | `0x00` | Master |
+| CMD_PING | `0x01` | Master |
+| CMD_GET_INFO | `0x02` | Master |
+| CMD_RETURN_INFO | `0x03` | Slave |
+| CMD_SET_STATE | `0x04` | Master |
+| CMD_SET_MOTOR | `0x05` | Master |
+| CMD_SET_PISTON | `0x06` | Master |
 
 
 CMD_NOP : No cmd <br>
-CMD_PING : Ping driver, waits for ping back to verify communication. Possibility to add a custom message to pinged device. IN (64B, optional) : char* <br>
-CMD_GET_INFO : Retrieve data from driver. IN (1B) :  <br> 
+CMD_PING : Ping driver, waits for ping back to verify communication. Possibility to add a custom message to pinged device. data(64B, optional) : char* <br>
+CMD_GET_INFO : Master request data from driver. data(1B) :  <br> 
 | Instruction            | Position bit   |
 | ---------------------- |:--------------:|
 | POSITION               | 0              |
@@ -368,9 +368,24 @@ CMD_GET_INFO : Retrieve data from driver. IN (1B) :  <br>
 | TEMPERATURE            | 3              |
 | MCU_VOLTAGE            | 4              |
 | DRIVER_VOLTAGE         | 5              |
-| UNDEFINED              | 6              |
+| DRIVER_STATE           | 6              |
 | UNDEFINED              | 7              |
 <br>
+
+CMD_RETURN_INFO : Driver respond with requested data. data(14B) : <br>
+| Instruction            | Position byte  |
+| ---------------------- |:--------------:|
+| POSITION               | 0-1            |
+| SPEED                  | 2-3            |
+| ACCELERATION           | 4-5            |
+| TEMPERATURE            | 6-7            |
+| MCU_VOLTAGE            | 8-9            |
+| DRIVER_VOLTAGE         | 10-11          |
+| DRIVER_STATE           | 12-13          |
+| UNDEFINED              | ---            |
+<br>
+Pay attention that the response uses a `variable-length packed format`. But the requested values are appended sequentially without gaps. For example, requesting only POSITION and DRIVER_STATE will result in a 4-byte payload where the state immediately follows the position.
+
 CMD_SET_STATE : Set the state of the driver. IN (1B) :  <br> 
 | Instruction            | Position bit   |
 | ---------------------- |:--------------:|
@@ -383,7 +398,20 @@ CMD_SET_STATE : Set the state of the driver. IN (1B) :  <br>
 | UNDEFINED              | 6              |
 | UNDEFINED              | 7              |
 <br>
-CMD_SET_MOTOR : No cmd <br>
+
+CMD_SET_MOTOR : Set the configuration of the motor. IN (1B) :  <br> 
+| Instruction            | Position bit   |
+| ---------------------- |:--------------:|
+| MOTOR_ENABLE           | 0              |
+| MOTOR_MOVEMENT         | 1              |
+| UNDEFINED              | 2              |
+| UNDEFINED              | 3              |
+| UNDEFINED              | 4              |
+| UNDEFINED              | 5              |
+| UNDEFINED              | 6              |
+| UNDEFINED              | 7              |
+<br>
+
 CMD_SET_PISTON : No cmd <br>
 
 
