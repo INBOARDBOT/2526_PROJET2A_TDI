@@ -445,6 +445,8 @@ Master - Slave synchonization cycle
 #### Error Recovery
 
 ### FSM du protocole de communication
+<img src="FSM_communication.png" width="400"><br>
+
 #### TimeOut
 
 
