@@ -16,6 +16,7 @@ typedef struct {
     bool isMotorEnabled;
     bool isMotorMoving;
     int  mode;
+    // Will probably add supplementary informations here
 } PistonState_t;
 
 // Public interface
