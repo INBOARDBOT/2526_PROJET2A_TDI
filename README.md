@@ -434,21 +434,26 @@ FIFO qui se remplie d'erreur et d'evenement, se vide a chaque fois que slqve env
 Master - Slave synchonization cycle  
 ![Diagram Name](seq_diag_master_slave_cycle.drawio.svg)
 
-
-## Driver - Traitement des informations
+## Synchroniser le systeme
 [!En cours de developpement]
 
-## Centrale - Traitement des informations
-[!En cours de developpement]
-
-### Machine a etat fini
+### FSM du systeme
 <img src="fsm_master.png" width="400"><br>
 
-### Update
-[!En cours de developpement]
+#### Les etats de base 
 
-### TimeOut
-[!En cours de developpement]
+#### Error Recovery
+
+### FSM du protocole de communication
+#### TimeOut
+
+
+### Synchronisation des deux FSM
+
+#### variable `extern`
+#### Statue des drivers
+
+### Traiter les informations ascendantes (cote centrale)
 
 ## Synchronisation avec l'API graphique
 
