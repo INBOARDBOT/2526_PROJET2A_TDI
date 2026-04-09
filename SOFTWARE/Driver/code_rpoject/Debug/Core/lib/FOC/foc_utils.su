@@ -1,0 +1,10 @@
+../Core/lib/FOC/foc_utils.c:20:6:signal_init	3160	static
+../Core/lib/FOC/foc_utils.c:32:6:foc_init	24	static
+../Core/lib/FOC/foc_utils.c:48:6:foc_speed_control_update	32	static
+../Core/lib/FOC/foc_utils.c:60:6:foc_current_control_update	48	static
+../Core/lib/FOC/foc_utils.c:83:6:foc_position_control_update	48	static
+../Core/lib/FOC/foc_utils.c:106:6:open_loop_velocity_run	88	static
+../Core/lib/FOC/foc_utils.c:137:6:open_loop_velocity_run_SVPWM	72	static
+../Core/lib/FOC/foc_utils.c:164:6:setup_test_foc_open_loop	16	static
+../Core/lib/FOC/foc_utils.c:186:6:lock_rotor	48	static
+../Core/lib/FOC/foc_utils.c:267:6:mag_misalignement_encoder	32	static

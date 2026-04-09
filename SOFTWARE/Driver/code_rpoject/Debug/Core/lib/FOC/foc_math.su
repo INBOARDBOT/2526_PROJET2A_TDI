@@ -1,0 +1,4 @@
+../Core/lib/FOC/foc_math.c:4:6:clark_transforn	40	static
+../Core/lib/FOC/foc_math.c:8:6:park_transforn	64	static
+../Core/lib/FOC/foc_math.c:17:6:park_invtransforn	64	static
+../Core/lib/FOC/foc_math.c:27:6:svpwm	64	static

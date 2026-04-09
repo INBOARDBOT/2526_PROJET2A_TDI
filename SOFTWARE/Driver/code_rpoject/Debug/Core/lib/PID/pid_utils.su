@@ -1,0 +1,6 @@
+../Core/lib/PID/pid_utils.c:6:6:PID_Init	24	static
+../Core/lib/PID/pid_utils.c:22:6:PID_autoconfig	96	static
+../Core/lib/PID/pid_utils.c:42:6:PID_Config	24	static
+../Core/lib/PID/pid_utils.c:56:6:PID_Reset	16	static
+../Core/lib/PID/pid_utils.c:64:6:PID_ResetAll	16	static
+../Core/lib/PID/pid_utils.c:76:11:PID_Update	40	static

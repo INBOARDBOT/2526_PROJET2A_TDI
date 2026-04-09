@@ -1,0 +1,5 @@
+../Core/lib/application/displayPyGraph.c:18:6:send_to_Python_over_UART_RPM	576	static
+../Core/lib/application/displayPyGraph.c:25:6:send_to_Python_over_UART_pos	560	static
+../Core/lib/application/displayPyGraph.c:33:6:send_to_Python_over_UART_amp	576	static
+../Core/lib/application/displayPyGraph.c:40:6:send_to_Python_over_UART_amp_special	640	static
+../Core/lib/application/displayPyGraph.c:49:6:send_to_Python_over_UART_pos_direct	136	static

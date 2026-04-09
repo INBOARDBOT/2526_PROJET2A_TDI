@@ -1,0 +1,6 @@
+../Core/lib/FOC/foc_config.c:4:6:start_general_timer	16	static
+../Core/lib/FOC/foc_config.c:8:6:stop_general_timer	16	static
+../Core/lib/FOC/foc_config.c:13:6:start_injection_channel	16	static
+../Core/lib/FOC/foc_config.c:17:6:stop_injection_channel	16	static
+../Core/lib/FOC/foc_config.c:22:6:start_encoder_timer	16	static
+../Core/lib/FOC/foc_config.c:26:6:stop_encoder_timer	16	static
