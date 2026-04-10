@@ -124,7 +124,7 @@ On mesure directement **Ia** (en phase) et **Ib** (déphasé de π/3), puis **Ic
 Ic = -(Ia + Ib)
 ```
 
-![Fenêtre d'échantillonnage ADC](img_src/adc_sample.png)
+![Fenêtre d'échantillonnage ADC](img_src\adc_sample.png)
 
 ### Conversion tension → courant
 
@@ -138,7 +138,7 @@ En pratique, les résultats obtenus avec cette formule étaient aberrants — le
 
 **Solution adoptée :** calibration expérimentale. Des courants connus ont été injectés via un générateur de courant, et les valeurs ADC correspondantes ont été relevées. La relation linéaire obtenue sert de référence de conversion.
 
-![Courbes de calibration courant/ADC](img_src/amp_mesaure.png)
+![Courbes de calibration courant/ADC](img_src\amp_mesaure.png)
 
 L'exploitation de ces courbes est détaillée dans la section *Contrôleur courant*.
 
@@ -180,13 +180,15 @@ V_bus = valeur_ADC / (2¹² - 1) × V_ref
 
 Les contrôleurs corrigent les écarts entre la consigne et la mesure réelle. Ils sont organisés en trois boucles imbriquées, du plus rapide au plus lent : **courant → vitesse → position**.
 
+![Correcteur en cascade](img_src\cascade_controler.png)
+
 ---
 
 ## Contrôleur courant
 
 C'est la boucle la plus rapide et la plus critique du système. Elle s'exécute à **10 kHz** (toutes les 100 µs) et garantit que le moteur ne surconsomme pas, quelle que soit la consigne de couple.
 
-![Current Control](img_src/current_control.png)
+![Current Control](img_rsc\current_control.png)
 
 ### Transformées de Clarke et Park
 
