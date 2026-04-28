@@ -1,5 +1,0 @@
-../Core/lib/peripherals/motor/motor_utils.c:4:6:motor_init	24	static
-../Core/lib/peripherals/motor/motor_utils.c:15:6:motor_reset	24	static
-../Core/lib/peripherals/motor/motor_utils.c:23:6:motor_start	24	static
-../Core/lib/peripherals/motor/motor_utils.c:42:6:motor_stop	24	static
-../Core/lib/peripherals/motor/motor_utils.c:61:6:motor_set_pwm	32	static

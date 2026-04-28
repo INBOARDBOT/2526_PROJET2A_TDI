@@ -1,7 +1,0 @@
-../Core/lib/peripherals/encoder/encoder_utils.c:6:6:encoder_init	72	static
-../Core/lib/peripherals/encoder/encoder_utils.c:24:6:set_encoder_zero	16	static
-../Core/lib/peripherals/encoder/encoder_utils.c:29:6:update_raw_position	16	static
-../Core/lib/peripherals/encoder/encoder_utils.c:46:6:calculate_rpm	24	static
-../Core/lib/peripherals/encoder/encoder_utils.c:54:6:update_encoder_interrupt	16	static
-../Core/lib/peripherals/encoder/encoder_utils.c:62:6:update_angles	32	static
-../Core/lib/peripherals/encoder/encoder_utils.c:87:6:encoder_reset	16	static

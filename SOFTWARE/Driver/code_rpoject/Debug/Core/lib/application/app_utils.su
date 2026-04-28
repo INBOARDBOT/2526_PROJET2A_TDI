@@ -1,7 +1,0 @@
-../Core/lib/application/app_utils.c:4:6:application_init	24	static
-../Core/lib/application/app_utils.c:12:6:application_setup	24	static
-../Core/lib/application/app_utils.c:45:20:asserv_current	40	static
-../Core/lib/application/app_utils.c:74:25:wrap_two_pi	16	static
-../Core/lib/application/app_utils.c:82:6:launch_sequence	56	static
-../Core/lib/application/app_utils.c:197:6:exec_open_loop_500Hz	16	static
-../Core/lib/application/app_utils.c:208:6:exec_loop_10kHz	16	static

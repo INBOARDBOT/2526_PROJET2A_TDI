@@ -1,3 +1,0 @@
-../Core/lib/peripherals/ADC/analog_utils.c:3:6:analog_init	24	static
-../Core/lib/peripherals/ADC/analog_utils.c:16:6:update_current_sensor	48	static
-../Core/lib/peripherals/ADC/analog_utils.c:36:6:update_vbus_voltage	24	static
